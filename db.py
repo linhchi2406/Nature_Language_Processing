@@ -1,6 +1,7 @@
 import mysql.connector
 import nltk 
-
+from . import object_parser as object_parser
+import re
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
@@ -10,11 +11,8 @@ mydb = mysql.connector.connect(
   database='scrapy'
 )
 mycursor = mydb.cursor()
-mycursor.execute("SELECT title,content,date,time FROM content WHERE title LIKE '%covid%'")
-myresult = mycursor.fetchmany(5)
+mycursor.execute("SELECT title,content,date,time FROM content ")
+myresult = mycursor.fetchmany(3)
 for x in myresult:
-  tokens = [t for t in x[1].split()] 
-  freq = nltk.FreqDist(tokens) 
-  for key,val in freq.items(): 
-    print (str(key) + ':' + str(val))
-
+    object_parser.getObject(x['content'],x['date'])
+      
