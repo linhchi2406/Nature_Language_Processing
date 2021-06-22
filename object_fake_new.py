@@ -1,11 +1,10 @@
-
 import re
 import neo4j_until as neo4j
 import json
 
 FEMALE = [r"(n|N)ữ"]
 MALE = [r"(n|N)am", "nam giới"]
-AGE = [r"[0-9]{1,3}\s{1,6}tuổi"]
+AGE = [r"[0-9]{1,3}\s{1,6}tuổi",r"[0-9]{1,3}\s{1,6}tuổi"]
 BN_RANGE = [r"CA BỆNH\s{1,6}[0-9]{1,4} - [0-9]{1,4}",
         r"Bệnh nhân\s[0-9]{1,4} - [0-9]{1,4}",
          r"Bệnh nhân số\s{1,6}[0-9]{1,4} - [0-9]{1,4}"
@@ -88,11 +87,11 @@ def preprocessIDBN(text):
     for i in BNre:
         result = re.search(i, text)
         if result:
-            print(result.group(0))
+            # print(result.group(0))
             text_include = re.findall(i, text,flags)
             for bn in text_include:
                 print(bn)
-                print(str(re.findall(r"[0-9]{1,4}", bn,flags)))
+                # print(str(re.findall(r"[0-9]{1,4}", bn,flags)))
     text = text.replace("TP. ", "thành phố ")
     return text
 
@@ -187,8 +186,12 @@ def processCheck(text, date=None):
         if sex != None:
             IS_TRUE_NEW.append(matchInfoBN(BNid_main, "sex", sex))
         age = getAge(sentence)
+        print(age)
         if age != None:
             IS_TRUE_NEW.append(matchInfoBN(BNid_main, "age", age))
+            print(neo4j.getInfoBN(BNid_main, "age"))
+
+            
         flight = getFlight(sentence)
         if flight != None:
             original_flight = neo4j.getTranspotation(BNid_main)
