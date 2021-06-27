@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Check patient information true or false</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Check Information</h3>
+      </div>
+     <section>
+      <form class="form-horizontal" method="post" action="/add">
+        <fieldset>
+
+<!-- Form Name -->
+<legend>Fill in the information to check</legend>
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-9 control-label" for="txtPost">Information Victim</label>
+  <div class="col-md-9">                     
+    <textarea class="form-control" id="txtPost" name="inputInformation" ></textarea>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-9 control-label" for="singlebutton"></label>
+  <div class="col-md-9 d-flex justify-content-center ">
+    <input id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Publish" />
+  </div>
+</div>
+
+</fieldset>
+</form>
+      
+</section>
+      <footer class="footer">
+        <p>&copy; Information Covid</p>
+      </footer>
+    </div>
+  </body>
+</html>
+

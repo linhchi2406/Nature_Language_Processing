@@ -243,11 +243,11 @@ if __name__ == '__main__':
         user="root",
         password="linhchi",
         charset='utf8',
-        port = 3306, 
+        port = 3308, 
         database='scrapy'
     )
     mycursor = mydb.cursor()
-    mycursor.execute("SELECT title,content,date,time FROM content ")
+    mycursor.execute("SELECT title,content,date,time FROM news ")
     myresult = mycursor.fetchall()
     for x in myresult:
         getObject(x[1])
